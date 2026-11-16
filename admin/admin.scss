@@ -1,0 +1,136 @@
+
+@use "../style/colors" as *;
+@use "../style/nav_footer" as*;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $white;
+    color: $dark-brown;
+    font-family: "DM Sans", sans-serif;
+}
+
+
+main {
+    width: 70%;
+    margin: auto;
+}
+
+/* Sections */
+
+.admin-section {
+    margin-top: 20px;
+    background-color: $beige;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid $dark-brown;
+    border-radius: 12px;
+
+    h2 {
+        font-size: 21px;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+}
+
+/* Users Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+
+    th {
+        background-color: $mocha;
+        color: $white;
+    }
+
+    th, td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid $mocha;
+        font-size: 14px;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+}
+
+/* Forms */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 550px;
+
+    input, select, textarea {
+        width: 100%;
+        padding: 13px 15px;
+        border: 1px solid $beige;
+        border-radius: 6px;
+        background-color: $mocha;
+        color: $white;
+        font-family: inherit;
+        font-size: 14px;
+        outline: none;
+
+          &::placeholder{
+            color:$white;
+        }
+
+
+        &:focus {
+            border-color: $taupe;
+        }
+
+       
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    button {
+        padding: 13px 22px;
+        width: fit-content;
+        background-color: $mocha;
+        color: $white;
+        border: none;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.2s;
+        &:hover {
+            background-color: $dark-brown;
+        }
+    }
+}
+
+/* Action Buttons */
+
+.edit-btn,
+.delete-btn {
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background-color: $beige;
+    color: $dark-brown;
+}
+
+.delete-btn {
+    background-color: #f5e5e1;
+    color: #9b5143;
+}

@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #FFFFFF;
+  color: #66594F;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff6f3;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+}
+nav img {
+  width: 150px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 10px;
+}
+nav ul a {
+  text-decoration: none;
+  color: #66594F;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+}
+nav ul a:hover {
+  color: #8B7868;
+}
+nav i {
+  font-size: 1.5rem;
+  color: #66594F;
+  cursor: pointer;
+}
+nav button {
+  background-color: #66594F;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-size: 1rem;
+}
+nav button:hover {
+  background-color: #8B7868;
+}
+
+.footer {
+  background-color: #fff6f3;
+  padding: 20px;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.footer .footer-brand h2 {
+  font-size: 2rem;
+  color: #66594F;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.footer .footer-brand p {
+  color: #8B7868;
+  font-size: 0.9rem;
+}
+.footer h3 {
+  color: #66594F;
+  font-size: 1rem;
+}
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-links ul a {
+  text-decoration: none;
+  color: #8B7868;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+.footer .footer-links ul a:hover {
+  color: #66594F;
+}
+.footer .social-icons {
+  display: flex;
+  gap: 18px;
+}
+.footer .social-icons a {
+  color: #8B7868;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+}
+.footer .social-icons a:hover {
+  color: #66594F;
+}
+.footer .footer-bottom {
+  border-top: 1px solid #fff6f3;
+  padding-top: 20px;
+  text-align: center;
+}
+.footer .footer-bottom p {
+  color: #8B7868;
+  font-size: 0.8rem;
+}/*# sourceMappingURL=nav_footer.css.map */

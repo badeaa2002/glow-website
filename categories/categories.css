@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #FFFFFF;
+  color: #66594F;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff6f3;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+}
+nav img {
+  width: 150px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 10px;
+}
+nav ul a {
+  text-decoration: none;
+  color: #66594F;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+}
+nav ul a:hover {
+  color: #8B7868;
+}
+nav i {
+  font-size: 1.5rem;
+  color: #66594F;
+  cursor: pointer;
+}
+nav button {
+  background-color: #66594F;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-size: 1rem;
+}
+nav button:hover {
+  background-color: #8B7868;
+}
+
+.footer {
+  background-color: #fff6f3;
+  padding: 20px;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.footer .footer-brand h2 {
+  font-size: 2rem;
+  color: #66594F;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.footer .footer-brand p {
+  color: #8B7868;
+  font-size: 0.9rem;
+}
+.footer h3 {
+  color: #66594F;
+  font-size: 1rem;
+}
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-links ul a {
+  text-decoration: none;
+  color: #8B7868;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+.footer .footer-links ul a:hover {
+  color: #66594F;
+}
+.footer .social-icons {
+  display: flex;
+  gap: 18px;
+}
+.footer .social-icons a {
+  color: #8B7868;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+}
+.footer .social-icons a:hover {
+  color: #66594F;
+}
+.footer .footer-bottom {
+  border-top: 1px solid #fff6f3;
+  padding-top: 20px;
+  text-align: center;
+}
+.footer .footer-bottom p {
+  color: #8B7868;
+  font-size: 0.8rem;
+}
+
+.categories-content {
+  padding: 60px 8%;
+  text-align: center;
+}
+.categories-content .categories-header {
+  margin-bottom: 50px;
+  background-color: rgba(246, 200, 191, 0.3490196078);
+  border-radius: 20px;
+  padding: 30px 20px;
+}
+.categories-content .categories-header h1 {
+  color: #66594F;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.categories-content .categories-header p {
+  color: #8B7868;
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+.all-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.all-categories h2 {
+  color: #66594F;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.all-categories p {
+  color: #8B7868;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#skin-products,
+#makeup-products,
+#hair-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+#skin-products h2,
+#makeup-products h2,
+#hair-products h2 {
+  width: 100%;
+  color: #66594F;
+  font-size: 28px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+#skin-products > div,
+#makeup-products > div,
+#hair-products > div {
+  width: 220px;
+  text-align: left;
+  background-color: rgba(246, 200, 191, 0.3490196078);
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#skin-products > div:hover,
+#makeup-products > div:hover,
+#hair-products > div:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(102, 89, 79, 0.12);
+}
+#skin-products > div img,
+#makeup-products > div img,
+#hair-products > div img {
+  width: 100%;
+  height: 260px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#skin-products > div h3,
+#makeup-products > div h3,
+#hair-products > div h3 {
+  color: #66594F;
+  font-size: 17px;
+  margin: 12px 0 6px;
+}
+#skin-products > div p,
+#makeup-products > div p,
+#hair-products > div p {
+  color: #8B7868;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#skin-products > div span,
+#makeup-products > div span,
+#hair-products > div span {
+  color: #66594F;
+  font-weight: 600;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #66594F;
+  color: #FFFFFF;
+  border: 1px solid #66594F;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.add-to-cart:hover {
+  background-color: transparent;
+  color: #66594F;
+}
+
+.collection-divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.collection-divider::before, .collection-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #B9A394;
+}
+.collection-divider span {
+  color: #B9A394;
+  font-size: 22px;
+}/*# sourceMappingURL=categories.css.map */

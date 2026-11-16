@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: #FFFFFF;
+  color: #66594F;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff6f3;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+}
+nav img {
+  width: 150px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 10px;
+}
+nav ul a {
+  text-decoration: none;
+  color: #66594F;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+}
+nav ul a:hover {
+  color: #8B7868;
+}
+nav i {
+  font-size: 1.5rem;
+  color: #66594F;
+  cursor: pointer;
+}
+nav button {
+  background-color: #66594F;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-size: 1rem;
+}
+nav button:hover {
+  background-color: #8B7868;
+}
+
+.footer {
+  background-color: #fff6f3;
+  padding: 20px;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.footer .footer-brand h2 {
+  font-size: 2rem;
+  color: #66594F;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.footer .footer-brand p {
+  color: #8B7868;
+  font-size: 0.9rem;
+}
+.footer h3 {
+  color: #66594F;
+  font-size: 1rem;
+}
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-links ul a {
+  text-decoration: none;
+  color: #8B7868;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+.footer .footer-links ul a:hover {
+  color: #66594F;
+}
+.footer .social-icons {
+  display: flex;
+  gap: 18px;
+}
+.footer .social-icons a {
+  color: #8B7868;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+}
+.footer .social-icons a:hover {
+  color: #66594F;
+}
+.footer .footer-bottom {
+  border-top: 1px solid #fff6f3;
+  padding-top: 20px;
+  text-align: center;
+}
+.footer .footer-bottom p {
+  color: #8B7868;
+  font-size: 0.8rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #66594F;
+  font-family: "DM Sans", sans-serif;
+}
+
+main {
+  width: 70%;
+  margin: auto;
+}
+
+/* Sections */
+.admin-section {
+  margin-top: 20px;
+  background-color: #fff6f3;
+  padding: 30px;
+  margin-bottom: 30px;
+  border: 1px solid #66594F;
+  border-radius: 12px;
+}
+.admin-section h2 {
+  font-size: 21px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Users Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+table th {
+  background-color: #8B7868;
+  color: #FFFFFF;
+}
+table th, table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #8B7868;
+  font-size: 14px;
+}
+table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 550px;
+}
+form input, form select, form textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #fff6f3;
+  border-radius: 6px;
+  background-color: #8B7868;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+form input::-moz-placeholder, form select::-moz-placeholder, form textarea::-moz-placeholder {
+  color: #FFFFFF;
+}
+form input::placeholder, form select::placeholder, form textarea::placeholder {
+  color: #FFFFFF;
+}
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #B9A394;
+}
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+form button {
+  padding: 13px 22px;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #8B7868;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+form button:hover {
+  background-color: #66594F;
+}
+
+/* Action Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-right: 5px;
+}
+
+.edit-btn {
+  background-color: #fff6f3;
+  color: #66594F;
+}
+
+.delete-btn {
+  background-color: #f5e5e1;
+  color: #9b5143;
+}/*# sourceMappingURL=admin.css.map */

@@ -1,0 +1,134 @@
+@use '../style/colors' as *;
+@use '../style/nav_footer' as *;
+
+.categories-content {
+    padding: 60px 8%;
+    text-align: center;
+
+    .categories-header {
+        margin-bottom: 50px;
+        background-color: $card;
+        border-radius: 20px;
+        padding: 30px 20px;
+        h1 {
+            color: $dark-brown;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: $mocha;
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+    }
+}
+
+.all-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    h2{
+        color: $dark-brown;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    p{
+        color: $mocha;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+
+#skin-products,
+#makeup-products,
+#hair-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+
+    h2 {
+        width: 100%;
+        color: $dark-brown;
+        font-size: 28px;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    > div {
+        width: 220px;
+        text-align: left;
+        background-color: $card;
+        padding: 15px;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(102, 89, 79, 0.12);
+        }
+
+        img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        h3 {
+            color: $dark-brown;
+            font-size: 17px;
+            margin: 12px 0 6px;
+        }
+
+        p {
+            color: $mocha;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        span {
+            color: $dark-brown;
+            font-weight: 600;
+        }
+    }
+}
+
+
+.add-to-cart {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: $dark-brown;
+    color: $white;
+    border: 1px solid $dark-brown;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+        background-color: transparent;
+        color: $dark-brown;
+    }
+}
+
+.collection-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &::before,
+    &::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background-color: $taupe;
+    }
+
+    span {
+        color: $taupe;
+        font-size: 22px;
+    }
+}

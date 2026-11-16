@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="categories.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Categories</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Glow Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="../home.html">Home</a></li>
+            <li><a href="./categories.html">Categories</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li id="admin-link" hidden><a href="../admin/admin.html">Admin</a></li>    
+            <li>
+                <a href="../cart.html">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </a>
+            </li>
+        </ul>
+        <button id="login" class="login-button">Login</button>
+    </nav>
+    <!-- Categories Content -->
+    <div class="categories-content">
+        <div class="categories-header">
+            <h1>Explore Our Collections</h1>
+            <p>
+                Discover your beauty essentials.
+                From skincare to makeup and haircare,
+                find everything you need in one place.
+            </p>
+        </div>
+     <section class="all-categories">
+
+    <div class="category-section">
+        <h2>Skincare</h2>
+        <p>Discover skincare essentials to nourish, hydrate, and keep your skin glowing.</p>
+        <div id="skin-products"></div>
+    </div>
+    <div class="collection-divider">
+        <span>✧</span>
+    </div>
+    <div class="category-section">
+        <h2>Makeup</h2>
+        <p>Explore makeup essentials to enhance your natural beauty and express your style.</p>
+        <div id="makeup-products"></div>
+    </div>
+    <div class="collection-divider">
+        <span>✧</span>
+    </div>
+    <div class="category-section">
+        <h2>Haircare</h2>
+        <p>Find nourishing haircare products to keep your hair healthy, soft, and shiny.</p>
+        <div id="hair-products"></div>
+    </div>
+
+</section>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="./categories.html">Categories</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Customer Care -->
+            <div class="footer-links">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Information</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Glow. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <script type="module" src="categories.js"></script>
+</body>
+</html>

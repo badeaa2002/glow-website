@@ -1,4 +1,4 @@
-import { User, Role } from "../users/users.js";
+import { User, Role } from "../user_model/user_model";
 const usersTable = document.querySelector("#users-table");
 const users = JSON.parse(localStorage.getItem("user") || "[]");
 // Display Users

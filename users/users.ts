@@ -18,6 +18,7 @@ export class User {
 let users:User[] =JSON.parse(
  localStorage.getItem("userlist")||"[]");
 
+ if(!localStorage.getItem("userlist")){
 const admin = new User(
     1,
     "Admin",
@@ -26,8 +27,6 @@ const admin = new User(
     Role.Admin
 );
 
-    users.push(admin);
-    localStorage.setItem(("userlist"),JSON.stringify(users));
 
 const manager = new User(
     2,
@@ -37,8 +36,8 @@ const manager = new User(
     Role.manager
 );
 
-    users.push(manager);
+    users.push(admin,manager);
     localStorage.setItem(("userlist"),JSON.stringify(users));
 
-
+ }
 

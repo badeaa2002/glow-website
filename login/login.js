@@ -1,4 +1,4 @@
-import { User } from "../users/users.js";
+import { User } from "../users/users";
 const loginForm = document.querySelector("#login-form");
 const messageBox = document.querySelector("#message-box");
 loginForm.addEventListener("submit", (event) => {

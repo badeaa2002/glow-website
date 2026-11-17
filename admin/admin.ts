@@ -1,5 +1,5 @@
 
-import { User, Role } from "../users/users.js";
+import { User, Role } from "../user_model/user_model";
 
 const usersTable = document.querySelector("#users-table") as HTMLTableSectionElement;
 

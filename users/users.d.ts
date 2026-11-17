@@ -1,13 +1,14 @@
 export declare enum Role {
     Admin = 1,
     User = 2,
-    Projector = 3
+    manager = 3
 }
 export declare class User {
+    id: number;
     name: string;
     email: string;
     password: string;
     role: Role;
-    constructor(name: string, email: string, password: string, role?: Role);
+    constructor(id: number, name: string, email: string, password: string, role?: Role);
 }
 //# sourceMappingURL=users.d.ts.map

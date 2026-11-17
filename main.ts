@@ -1,6 +1,5 @@
 
-import { products } from "./data/product.js";
-import type { Product } from "./data/product.js";
+import { products , type Product } from "./data/product.js";
 import { Role, User } from "./users/users.js";
 
 const productsContainer = document.querySelector(".products-container");

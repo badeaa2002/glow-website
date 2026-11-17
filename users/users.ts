@@ -2,11 +2,12 @@
 export enum Role {
     Admin = 1,
     User = 2,
-    Projector = 3
+    manager = 3
 }
 
 export class User {
     constructor(
+        public id:number,
         public name: string,
         public email: string,
         public password: string,
@@ -14,28 +15,30 @@ export class User {
     ) {}
 }
 
+let users:User[] =JSON.parse(
+ localStorage.getItem("userlist")||"[]");
+
 const admin = new User(
+    1,
     "Admin",
     "admin@glow.com",
     "admin123",
     Role.Admin
 );
 
-const projector = new User(
-    "Projector",
+    users.push(admin);
+    localStorage.setItem(("userlist"),JSON.stringify(users));
+
+const manager = new User(
+    2,
+    "manager",
     "projector@glow.com",
     "projector123",
-    Role.Projector
+    Role.manager
 );
 
-if (localStorage.getItem("admin") === null) {
-    localStorage.setItem("admin", JSON.stringify(admin));
-}
+    users.push(manager);
+    localStorage.setItem(("userlist"),JSON.stringify(users));
 
-if (localStorage.getItem("projector") === null) {
-    localStorage.setItem("projector", JSON.stringify(projector));
-}
 
-if (localStorage.getItem("user") === null) {
-    localStorage.setItem("user", JSON.stringify([]));
-}
+

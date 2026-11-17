@@ -5,11 +5,8 @@ loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const email = document.querySelector("#email").value.trim();
     const password = document.querySelector("#password").value;
-    const admin = JSON.parse(localStorage.getItem("admin"));
-    const projector = JSON.parse(localStorage.getItem("projector"));
-    const users = JSON.parse(localStorage.getItem("user") || "[]");
-    const allUsers = [admin, projector, ...users];
-    const matchedUser = allUsers.find(user => user.email.toLowerCase() === email.toLowerCase() &&
+    const users = JSON.parse(localStorage.getItem("userlist") || "[]");
+    const matchedUser = users.find(user => user.email.toLowerCase() === email.toLowerCase() &&
         user.password === password);
     if (matchedUser) {
         localStorage.setItem("currentUser", JSON.stringify(matchedUser));

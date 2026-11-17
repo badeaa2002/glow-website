@@ -81,7 +81,7 @@ const currentUserData = localStorage.getItem("currentUser");
 if (currentUserData) {
     const currentUser = JSON.parse(currentUserData);
     loginButton.textContent = "Logout";
-    if (currentUser.role === Role.Admin) {
+    if (currentUser.role === Role.Admin || Role.manager) {
         adminLink.hidden = false;
     }
 }

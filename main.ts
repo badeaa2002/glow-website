@@ -99,9 +99,6 @@ prevBtn?.addEventListener("click", () => {
 // Initial display
 displayProducts();
 
-
-
-
 const loginButton = document.querySelector("#login") as HTMLButtonElement;
 const adminLink = document.querySelector("#admin-link") as HTMLLIElement;
 
@@ -112,7 +109,7 @@ if (currentUserData) {
 
     loginButton.textContent = "Logout";
 
-    if (currentUser.role === Role.Admin) {
+    if (currentUser.role === Role.Admin||Role.manager) {
         adminLink.hidden = false;
     }
 }

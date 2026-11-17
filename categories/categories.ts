@@ -1,6 +1,6 @@
 import { products } from "../data/product.js";
 import type { Product } from "../data/product.js";
-import { Role, User } from "../user_model/user_model.js";
+import { Role, User } from "../users/users.js";
 
 const skinContainer = document.querySelector("#skin-products");
 const makeupContainer = document.querySelector("#makeup-products");

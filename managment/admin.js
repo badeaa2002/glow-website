@@ -1,4 +1,5 @@
 import { User, Role } from "../users/users.js";
+import "../nav-bar/nav-bar.js";
 const usersTable = document.querySelector("#users-table");
 const adminSection = document.getElementById("admin");
 const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
@@ -48,24 +49,4 @@ function displayUsers() {
     });
 }
 displayUsers();
-// nav bar 
-const loginButton = document.querySelector("#login");
-const adminLink = document.querySelector("#admin-link");
-const currentUserData = localStorage.getItem("currentUser");
-if (currentUserData) {
-    const currentUser = JSON.parse(currentUserData);
-    loginButton.textContent = "Logout";
-    if (currentUser.role === Role.Admin || Role.manager) {
-        adminLink.hidden = false;
-    }
-}
-loginButton.addEventListener("click", () => {
-    if (loginButton.textContent === "Logout") {
-        localStorage.removeItem("currentUser");
-        window.location.reload();
-    }
-    else {
-        window.location.href = "../login/login.html";
-    }
-});
 //# sourceMappingURL=admin.js.map

@@ -1,5 +1,6 @@
 
 import { User, Role } from "../users/users.js";
+import "../nav-bar/nav-bar.js";
 const usersTable = document.querySelector("#users-table") as HTMLTableSectionElement;
 const adminSection =document.getElementById("admin")  as HTMLElement;
 
@@ -64,26 +65,4 @@ displayUsers();
 
 
 
-// nav bar 
-const loginButton = document.querySelector("#login") as HTMLButtonElement;
-const adminLink = document.querySelector("#admin-link") as HTMLLIElement;
-
-
-const currentUserData = localStorage.getItem("currentUser");
-if (currentUserData) {
-    const currentUser: User = JSON.parse(currentUserData);
-    loginButton.textContent = "Logout";
-    if (currentUser.role === Role.Admin||Role.manager) {
-        adminLink.hidden = false;
-    }
-}
-
-loginButton.addEventListener("click", () => {
-    if (loginButton.textContent === "Logout") {
-        localStorage.removeItem("currentUser");
-        window.location.reload();
-    } else {
-        window.location.href = "../login/login.html";
-    }
-});
 

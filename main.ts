@@ -1,6 +1,6 @@
 
 import { products ,type Product } from "./data/product.js";
-import { Role, User } from "./users/users.js";
+import "./nav-bar/nav-bar.js"
 
 const productsContainer = document.querySelector(".products-container");
 const nextBtn = document.querySelector(".next-btn") as HTMLButtonElement;
@@ -98,28 +98,3 @@ prevBtn?.addEventListener("click", () => {
 
 // Initial display
 displayProducts();
-
-const loginButton = document.querySelector("#login") as HTMLButtonElement;
-const adminLink = document.querySelector("#admin-link") as HTMLLIElement;
-
-const currentUserData = localStorage.getItem("currentUser");
-
-if (currentUserData) {
-    const currentUser: User = JSON.parse(currentUserData);
-
-    loginButton.textContent = "Logout";
-
-    if (currentUser.role === Role.Admin||Role.manager) {
-        adminLink.hidden = false;
-    }
-}
-
-loginButton.addEventListener("click", () => {
-    if (loginButton.textContent === "Logout") {
-        localStorage.removeItem("currentUser");
-        window.location.reload();
-    } else {
-        window.location.href = "./login/login.html";
-    }
-});
-

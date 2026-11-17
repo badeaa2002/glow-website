@@ -1,6 +1,7 @@
 import { products } from "../data/product.js";
 import type { Product } from "../data/product.js";
 import { Role, User } from "../users/users.js";
+import "../nav-bar/nav-bar.js";
 
 const skinContainer = document.querySelector("#skin-products");
 const makeupContainer = document.querySelector("#makeup-products");
@@ -29,29 +30,5 @@ products.forEach((product) => {
     } 
     else if (product.category === "hair" && hairContainer) {
         displayProduct(product, hairContainer);
-    }
-});
-
-const loginButton = document.querySelector("#login") as HTMLButtonElement;
-const adminLink = document.querySelector("#admin-link") as HTMLLIElement;
-
-const currentUserData = localStorage.getItem("currentUser");
-
-if (currentUserData) {
-    const currentUser: User = JSON.parse(currentUserData);
-
-    loginButton.textContent = "Logout";
-
-    if (currentUser.role === Role.Admin) {
-        adminLink.hidden = false;
-    }
-}
-
-loginButton.addEventListener("click", () => {
-    if (loginButton.textContent === "Logout") {
-        localStorage.removeItem("currentUser");
-        window.location.reload();
-    } else {
-        window.location.href = "../login/login.html";
     }
 });

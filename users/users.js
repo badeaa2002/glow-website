@@ -1,23 +1,4 @@
-export var Role;
-(function (Role) {
-    Role[Role["Admin"] = 1] = "Admin";
-    Role[Role["User"] = 2] = "User";
-    Role[Role["manager"] = 3] = "manager";
-})(Role || (Role = {}));
-export class User {
-    id;
-    name;
-    email;
-    password;
-    role;
-    constructor(id, name, email, password, role = Role.User) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-}
+import { User, Role } from "../user_model/user_model.js";
 let users = JSON.parse(localStorage.getItem("userlist") || "[]");
 if (!localStorage.getItem("userlist")) {
     const admin = new User(1, "Admin", "admin@glow.com", "admin123", Role.Admin);

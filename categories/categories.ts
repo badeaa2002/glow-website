@@ -1,6 +1,5 @@
-import { products } from "../data/product.js";
-import type { Product } from "../data/product.js";
-import { Role, User } from "../users/users.js";
+import { products , type Product } from "../data/product.js";
+import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 
 const skinContainer = document.querySelector("#skin-products");
@@ -31,4 +30,10 @@ products.forEach((product) => {
     else if (product.category === "hair" && hairContainer) {
         displayProduct(product, hairContainer);
     }
+
 });
+
+
+
+
+

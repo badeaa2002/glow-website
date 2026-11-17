@@ -1,5 +1,6 @@
 
-import { User } from "../users/users.js";
+import {User}from "../user_model/user_model.js";
+import "../users/users.js";
 
 const loginForm = document.querySelector("#login-form") as HTMLFormElement;
 const messageBox = document.querySelector("#message-box") as HTMLDivElement;

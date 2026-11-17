@@ -1,11 +1,13 @@
-import { Role, User } from "../users/users.js";
+import { User, Role } from "../user_model/user_model.js";
+import "../users/users.js";
 const loginButton = document.querySelector("#login");
 const adminLink = document.querySelector("#admin-link");
 const currentUserData = localStorage.getItem("currentUser");
 if (currentUserData) {
     const currentUser = JSON.parse(currentUserData);
     loginButton.textContent = "Logout";
-    if (currentUser.role === Role.Admin || Role.manager) {
+    if (currentUser.role === Role.Admin ||
+        currentUser.role === Role.manager) {
         adminLink.hidden = false;
     }
 }

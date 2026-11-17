@@ -1,21 +1,7 @@
 
-export enum Role {
-    Admin = 1,
-    User = 2,
-    manager = 3
-}
+import {User , Role}from "../user_model/user_model.js"
 
-export class User {
-    constructor(
-        public id:number,
-        public name: string,
-        public email: string,
-        public password: string,
-        public role: Role = Role.User
-    ) {}
-}
-
-let users:User[] =JSON.parse(
+ let users:User[] =JSON.parse(
  localStorage.getItem("userlist")||"[]");
 
 if(!localStorage.getItem("userlist")){

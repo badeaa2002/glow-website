@@ -1,4 +1,5 @@
-import { User, Role } from "../users/users.js";
+import { User, Role } from "../user_model/user_model.js";
+import "../users/users.js";
 const registerForm = document.querySelector("#register-form");
 const messageBox = document.querySelector("#message-box");
 registerForm.addEventListener("submit", (event) => {

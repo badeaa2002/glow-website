@@ -247,4 +247,49 @@ nav button:hover {
 .collection-divider span {
   color: #B9A394;
   font-size: 22px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+.pagination .prev-btn,
+.pagination .next-btn {
+  background-color: transparent;
+  border: 1px solid #fff6f3;
+  color: #66594F;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.3s;
+}
+.pagination .prev-btn:hover,
+.pagination .next-btn:hover {
+  background-color: #fff6f3;
+}
+.pagination .prev-btn:disabled,
+.pagination .next-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pagination .page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.pagination .page-numbers .page-link {
+  text-decoration: none;
+  color: #8B7868;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pagination .page-numbers .page-link.active {
+  color: #66594F;
+  font-weight: 600;
+  border-bottom-color: #66594F;
 }/*# sourceMappingURL=categories.css.map */

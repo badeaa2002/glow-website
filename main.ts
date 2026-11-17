@@ -1,5 +1,6 @@
 
 import { products ,type Product } from "./data/product.js";
+import "./users/users.js"
 import "./nav-bar/nav-bar.js"
 
 const productsContainer = document.querySelector(".products-container");

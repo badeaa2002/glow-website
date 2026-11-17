@@ -1,5 +1,5 @@
 import { products } from "../data/product.js";
-import { Role, User } from "../users/users.js";
+import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 const skinContainer = document.querySelector("#skin-products");
 const makeupContainer = document.querySelector("#makeup-products");

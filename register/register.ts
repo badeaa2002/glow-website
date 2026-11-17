@@ -1,5 +1,7 @@
 
-import { User,Role } from "../users/users"
+import { User,Role } from "../users/users.js";
+
+
 const registerForm = document.querySelector("#register-form") as HTMLFormElement;
 const messageBox = document.querySelector("#message-box") as HTMLDivElement;
 

@@ -4,7 +4,7 @@ import {User , Role}from "../user_model/user_model.js"
  let users:User[] =JSON.parse(
  localStorage.getItem("userlist")||"[]");
 
-if(!localStorage.getItem("userlist")){
+if(users.length==0){
 
 const admin = new User(
     1,

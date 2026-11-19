@@ -1,39 +1,41 @@
-import { products , type Product } from "../data/product.js";
+import { products} from "../data/product.js";
+import { setupPagination } from "../pagination/pagination.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 
-const skinContainer = document.querySelector("#skin-products");
-const makeupContainer = document.querySelector("#makeup-products");
-const hairContainer = document.querySelector("#hair-products");
+const categories = [
+    { name: "skin", id: "skin-products", paginationId: "skin-pagination" },
+    { name: "makeup", id: "makeup-products", paginationId: "makeup-pagination" },
+    { name: "hair", id: "hair-products", paginationId: "hair-pagination" }
+];
 
-function displayProduct(product: Product, container: Element) {
-    const productItem = document.createElement("div");
+categories.forEach((category) => {
 
-    productItem.innerHTML = `
-        <img src="../${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <span>$${product.price}</span>
-         <button class="add-to-cart">Add to Cart</button>
-    `;
+    const container = document.querySelector(`#${category.id}`);
+    const pagination = document.querySelector(`#${category.paginationId}`);
 
-    container.appendChild(productItem);
-}
+    if (!container || !pagination) return;
 
-products.forEach((product) => {
-    if (product.category === "skin" && skinContainer) {
-        displayProduct(product, skinContainer);
-    } 
-    else if (product.category === "makeup" && makeupContainer) {
-        displayProduct(product, makeupContainer);
-    } 
-    else if (product.category === "hair" && hairContainer) {
-        displayProduct(product, hairContainer);
-    }
+    const nextBtn = pagination.querySelector(".next-btn") as HTMLButtonElement;
+    const prevBtn = pagination.querySelector(".prev-btn") as HTMLButtonElement;
+    const pageNumbers = pagination.querySelector(".page-numbers");
 
-});
+    if (!nextBtn || !prevBtn || !pageNumbers) return;
 
+    const categoryProducts = products.filter(
+        product => product.category === category.name
+    );
 
+    setupPagination(
+        categoryProducts,
+        container,
+        pageNumbers,
+        nextBtn,
+        prevBtn,
+        3
 
+    );
+
+}); 
 
 

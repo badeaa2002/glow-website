@@ -20,9 +20,9 @@ if (currentUserData) {
 loginButton.addEventListener("click", () => {
     if (loginButton.textContent === "Logout") {
         localStorage.removeItem("currentUser");
-        window.location.href = "./home.html";
+        window.location.href = "../home/home.html";
     } else {
-        window.location.href = "./login/login.html";
+        window.location.href = "../login/login.html";
     }
 });
 

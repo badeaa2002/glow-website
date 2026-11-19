@@ -6,6 +6,5 @@ export type Product = {
     image: string;
     category: string;
 };
-declare const products: Product[];
-export { products };
+export declare const products: Product[];
 //# sourceMappingURL=product.d.ts.map

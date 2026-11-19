@@ -18,7 +18,7 @@
             <img src="../images/logo.png" alt="Glow Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="../home.html">Home</a></li>
+            <li><a href="../home/home.html">Home</a></li>
             <li><a href="./categories.html">Categories</a></li>
             <li><a href="../contact.html">Contact</a></li>
             <li id="admin-link" hidden><a href="../managment/admin.html">Managment</a></li>    
@@ -46,12 +46,11 @@
         <h2>Skincare</h2>
         <p>Discover skincare essentials to nourish, hydrate, and keep your skin glowing.</p>
         <div id="skin-products"></div>
-        
-    <div class="pagination">
-        <button class="prev-btn">Previous</button>
+        <div class="pagination" id="skin-pagination">
+            <button class="prev-btn">Previous</button>
             <div class="page-numbers"></div>
-        <button class="next-btn">Next</button>
-    </div>
+            <button class="next-btn">Next</button>
+        </div>
     </div>
     <div class="collection-divider">
         <span>✧</span>
@@ -60,6 +59,11 @@
         <h2>Makeup</h2>
         <p>Explore makeup essentials to enhance your natural beauty and express your style.</p>
         <div id="makeup-products"></div>
+        <div class="pagination" id="makeup-pagination">
+            <button class="prev-btn">Previous</button>
+            <div class="page-numbers"></div>
+            <button class="next-btn">Next</button>
+        </div>
     </div>
     <div class="collection-divider">
         <span>✧</span>
@@ -67,13 +71,12 @@
     <div class="category-section">
         <h2>Haircare</h2>
         <p>Find nourishing haircare products to keep your hair healthy, soft, and shiny.</p>
-        <div id="hair-products"></div>
-        
-    <div class="pagination">
-        <button class="prev-btn">Previous</button>
+        <div id="hair-products"></div> 
+        <div class="pagination" id="hair-pagination">
+            <button class="prev-btn">Previous</button>
             <div class="page-numbers"></div>
-        <button class="next-btn">Next</button>
-    </div>
+            <button class="next-btn">Next</button>
+        </div>
     </div>
 
 </section>

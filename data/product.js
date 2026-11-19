@@ -1,10 +1,10 @@
-const products = [
+export const products = [
     {
         id: 1,
         name: "Vitamin C Serum",
         description: "Brightens skin and improves skin tone.",
         price: 15,
-        image: "images/vitamin.png",
+        image: "../images/vitamin.png",
         category: "skin"
     },
     {
@@ -12,7 +12,7 @@ const products = [
         name: "Hyaluronic Acid Serum",
         description: "Hydrates skin and keeps it soft and smooth.",
         price: 18,
-        image: "images/hyaluronic.png",
+        image: "../images/hyaluronic.png",
         category: "skin"
     },
     {
@@ -20,7 +20,7 @@ const products = [
         name: "Gentle Facial Cleanser",
         description: "Gently cleanses skin and removes impurities.",
         price: 12,
-        image: "images/cleanser.png",
+        image: "../images/cleanser.png",
         category: "skin"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         name: "Daily Moisturizer",
         description: "Provides long-lasting hydration for your skin.",
         price: 20,
-        image: "images/moisturizer.png",
+        image: "../images/moisturizer.png",
         category: "skin"
     },
     {
@@ -36,7 +36,7 @@ const products = [
         name: "Daily Sunscreen",
         description: "Protects skin from harmful UV rays.",
         price: 22,
-        image: "images/sunscreen.png",
+        image: "../images/sunscreen.png",
         category: "skin"
     },
     {
@@ -44,7 +44,7 @@ const products = [
         name: "Matte Lipstick",
         description: "Long-lasting lipstick with a smooth matte finish.",
         price: 12,
-        image: "images/lipstick.png",
+        image: "../images/lipstick.png",
         category: "makeup"
     },
     {
@@ -52,7 +52,7 @@ const products = [
         name: "Liquid Foundation",
         description: "Provides smooth and natural-looking coverage.",
         price: 25,
-        image: "images/foundation.png",
+        image: "../images/foundation.png",
         category: "makeup"
     },
     {
@@ -60,7 +60,7 @@ const products = [
         name: "Mascara",
         description: "Adds volume and length to your lashes.",
         price: 14,
-        image: "images/mascara.png",
+        image: "../images/mascara.png",
         category: "makeup"
     },
     {
@@ -68,7 +68,7 @@ const products = [
         name: "Eyeshadow Palette",
         description: "A collection of beautiful everyday shades.",
         price: 28,
-        image: "images/eyeshadow.png",
+        image: "../images/eyeshadow.png",
         category: "makeup"
     },
     {
@@ -76,7 +76,7 @@ const products = [
         name: "Cream Blush",
         description: "Adds a natural and radiant color to your cheeks.",
         price: 16,
-        image: "images/blush.png",
+        image: "../images/blush.png",
         category: "makeup"
     },
     {
@@ -84,7 +84,7 @@ const products = [
         name: "Repair Shampoo",
         description: "Gently cleanses hair and helps repair damage.",
         price: 16,
-        image: "images/shampoo.png",
+        image: "../images/shampoo.png",
         category: "hair"
     },
     {
@@ -92,7 +92,7 @@ const products = [
         name: "Conditioner",
         description: "Softens hair and makes it easier to manage.",
         price: 14,
-        image: "images/conditioner.png",
+        image: "../images/conditioner.png",
         category: "hair"
     },
     {
@@ -100,7 +100,7 @@ const products = [
         name: "Argan Hair Oil",
         description: "Adds shine and helps reduce frizz.",
         price: 20,
-        image: "images/oil.png",
+        image: "../images/oil.png",
         category: "hair"
     },
     {
@@ -108,7 +108,7 @@ const products = [
         name: "Hair Mask",
         description: "Deeply nourishes and strengthens dry hair.",
         price: 22,
-        image: "images/mask.png",
+        image: "../images/mask.png",
         category: "hair"
     },
     {
@@ -116,9 +116,8 @@ const products = [
         name: "Heat Protection Spray",
         description: "Helps protect hair from heat styling damage.",
         price: 18,
-        image: "images/protection.png",
+        image: "../images/protection.png",
         category: "hair"
     }
 ];
-export { products };
 //# sourceMappingURL=product.js.map

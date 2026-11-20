@@ -1,3 +1,4 @@
+import {} from "../product_model/product_model.js";
 export const products = [
     {
         id: 1,

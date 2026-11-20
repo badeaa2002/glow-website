@@ -1,10 +1,3 @@
-export type Product = {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    image: string;
-    category: string;
-};
+import { type Product } from "../product_model/product_model.js";
 export declare const products: Product[];
 //# sourceMappingURL=product.d.ts.map

@@ -1,4 +1,4 @@
-import type { Product } from "../data/product.js";
+import type { Product } from "../product_model/product_model.js";
 
 export function setupPagination(
     displayedProducts :Product[],
@@ -6,7 +6,9 @@ export function setupPagination(
     pageNumbers:Element,
     nextBtn:HTMLButtonElement,
     prevBtn:HTMLButtonElement,
-    productsPerPage: number
+    productsPerPage: number,
+    canDelete: boolean = false,
+    onDelete?: (id: number) => void
 ):void {
      let currentPage = 0;
      const totalPages = Math.ceil(
@@ -31,6 +33,18 @@ export function setupPagination(
                 <p>${product.description}</p>
                 <span>$${product.price}</span>
             `;
+            if (canDelete) {
+                const deleteBtn = document.createElement("button");
+
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("delete-btn");
+
+                deleteBtn.addEventListener("click", () => {
+                    onDelete?.(product.id);
+                });
+
+                productCard.appendChild(deleteBtn);
+            }
 
             productsContainer.appendChild(productCard);
         });

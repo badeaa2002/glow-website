@@ -1,4 +1,4 @@
-export function setupPagination(displayedProducts, productsContainer, pageNumbers, nextBtn, prevBtn, productsPerPage) {
+export function setupPagination(displayedProducts, productsContainer, pageNumbers, nextBtn, prevBtn, productsPerPage, canDelete = false, onDelete) {
     let currentPage = 0;
     const totalPages = Math.ceil(displayedProducts.length / productsPerPage);
     function displayProducts() {
@@ -14,6 +14,15 @@ export function setupPagination(displayedProducts, productsContainer, pageNumber
                 <p>${product.description}</p>
                 <span>$${product.price}</span>
             `;
+            if (canDelete) {
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("delete-btn");
+                deleteBtn.addEventListener("click", () => {
+                    onDelete?.(product.id);
+                });
+                productCard.appendChild(deleteBtn);
+            }
             productsContainer.appendChild(productCard);
         });
         createPageNumbers();

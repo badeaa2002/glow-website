@@ -292,4 +292,22 @@ nav button:hover {
   color: #66594F;
   font-weight: 600;
   border-bottom-color: #66594F;
+}
+
+.delete-btn {
+  background-color: #66594F;
+  color: #fff;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+}
+.delete-btn:hover {
+  background-color: #c93e5b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(201, 62, 91, 0.2);
 }/*# sourceMappingURL=categories.css.map */

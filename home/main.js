@@ -1,7 +1,8 @@
-import { products } from "../data/product.js";
+import { getProducts } from "../product_storage/product_storage.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 import { setupPagination } from "../pagination/pagination.js";
+const products = getProducts();
 const productsContainer = document.querySelector(".products-container");
 const nextBtn = document.querySelector(".next-btn");
 const prevBtn = document.querySelector(".prev-btn");

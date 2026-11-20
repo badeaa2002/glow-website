@@ -2,8 +2,42 @@
 import {User , Role}from "../user_model/user_model.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
+
+import type { Product } from "../product_model/product_model.js";
+import { getProducts, saveProducts } from "../product_storage/product_storage.js";
+
 const usersTable = document.querySelector("#users-table") as HTMLTableSectionElement;
 const adminSection =document.getElementById("admin")  as HTMLElement;
+const productForm = document.getElementById("product-form") as HTMLFormElement;
+const productName = document.getElementById("product-name") as HTMLInputElement;
+const productDescription = document.getElementById("product-description") as HTMLTextAreaElement;
+const productPrice = document.getElementById("product-price") as HTMLInputElement;
+const productImage = document.getElementById("product-image") as HTMLInputElement;
+const productCategory = document.getElementById("product-category") as HTMLSelectElement;
+
+let products: Product[] = getProducts();
+productForm.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    const newProduct: Product = {
+        id: Math.max(...products.map(product => product.id)) + 1,
+        name: productName.value,
+        description: productDescription.value,
+        price: Number(productPrice.value),
+        image: productImage.value,
+        category: productCategory.value
+    };
+
+    products.push(newProduct);
+
+    saveProducts(products);
+
+    productForm.reset();
+
+    alert("Product added successfully!");
+
+});
 
 const currentUser: User | null = JSON.parse(
    localStorage.getItem("currentUser") || "null"

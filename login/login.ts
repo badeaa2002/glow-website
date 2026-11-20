@@ -17,7 +17,7 @@ loginForm.addEventListener("submit", (event) => {
     );
     if (matchedUser) {
         localStorage.setItem("currentUser", JSON.stringify(matchedUser));
-        window.location.href = "../home.html";
+        window.location.href = "../home/home.html";
     } else {
         messageBox.textContent = "Invalid email or password!";
         messageBox.style.display = "block";

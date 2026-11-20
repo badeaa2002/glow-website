@@ -1,8 +1,31 @@
 import { User, Role } from "../user_model/user_model.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
+import { getProducts, saveProducts } from "../product_storage/product_storage.js";
 const usersTable = document.querySelector("#users-table");
 const adminSection = document.getElementById("admin");
+const productForm = document.getElementById("product-form");
+const productName = document.getElementById("product-name");
+const productDescription = document.getElementById("product-description");
+const productPrice = document.getElementById("product-price");
+const productImage = document.getElementById("product-image");
+const productCategory = document.getElementById("product-category");
+let products = getProducts();
+productForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newProduct = {
+        id: Math.max(...products.map(product => product.id)) + 1,
+        name: productName.value,
+        description: productDescription.value,
+        price: Number(productPrice.value),
+        image: productImage.value,
+        category: productCategory.value
+    };
+    products.push(newProduct);
+    saveProducts(products);
+    productForm.reset();
+    alert("Product added successfully!");
+});
 const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
 if (currentUser) {
     if (currentUser.role === Role.manager) {

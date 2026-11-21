@@ -1,5 +1,6 @@
 
 import {User , Role}from "../user_model/user_model.js";
+import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 
@@ -25,7 +26,7 @@ productForm.addEventListener("submit", (e) => {
         name: productName.value,
         description: productDescription.value,
         price: Number(productPrice.value),
-        image: productImage.value,
+        image:`/images/${productImage.value}`,
         category: productCategory.value
     };
 
@@ -39,14 +40,8 @@ productForm.addEventListener("submit", (e) => {
 
 });
 
-const currentUser: User | null = JSON.parse(
-   localStorage.getItem("currentUser") || "null"
-);
-
-if(currentUser){
-    if(currentUser.role===Role.manager){
-        adminSection.hidden=true;
-    }
+if (checkRole(Role.manager)) {
+    adminSection.hidden = true;
 }
 
 
@@ -82,11 +77,11 @@ function displayUsers() {
             editButton.hidden = true;
         });
      // Save Role
-     saveButton.addEventListener("click", () => {
+    saveButton.addEventListener("click", () => {
     const selectedUser = users[index];
     if (selectedUser) {
         selectedUser.role = Number(roleSelect.value) as Role;
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userlist", JSON.stringify(users));
         displayUsers();
     }
 });

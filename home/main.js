@@ -1,4 +1,5 @@
 import { getProducts } from "../product_storage/product_storage.js";
+import { displayProducts } from "../display_product/display_product.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 import { setupPagination } from "../pagination/pagination.js";

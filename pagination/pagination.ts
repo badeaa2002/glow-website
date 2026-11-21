@@ -1,5 +1,5 @@
-
 import type { Product } from "../product_model/product_model.js";
+import { displayProducts } from "../display_product/display_product.js";
 
 export function setupPagination(
     displayedProducts: Product[],
@@ -10,104 +10,86 @@ export function setupPagination(
     productsPerPage: number,
     canDelete: boolean = false,
     onDelete?: (id: number) => void
-): void {
+    ): void {
 
     let currentPage = 0;
-    let selectedProductId: number | null = null;
-
-    const deleteModal = document.getElementById("delete-modal") as HTMLElement;
-    const confirmDeleteBtn = document.getElementById("confirm-delete") as HTMLButtonElement;
-    const cancelDeleteBtn = document.getElementById("cancel-delete") as HTMLButtonElement;
 
     const totalPages = Math.ceil(
         displayedProducts.length / productsPerPage
     );
-    function displayProducts(): void {
-        productsContainer.innerHTML = "";
+
+    // Display current page
+    function showCurrentPage(): void {
+
         const startIndex = currentPage * productsPerPage;
+
         const productsToDisplay = displayedProducts.slice(
             startIndex,
             startIndex + productsPerPage
         );
 
-        productsToDisplay.forEach((product) => {
-
-            const productCard = document.createElement("div");
-            productCard.classList.add("product-card");
-
-            productCard.innerHTML = `
-                <img src="../${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p>${product.description}</p>
-                <span>$${product.price}</span>
-            `;
-
-            if (canDelete) {
-                const deleteBtn = document.createElement("button");
-                deleteBtn.textContent = "Delete";
-                deleteBtn.classList.add("delete-btn");
-                deleteBtn.addEventListener("click", () => {
-                    selectedProductId = product.id;
-                    deleteModal.hidden = false;
-                });
-                productCard.appendChild(deleteBtn);
-            }
-            productsContainer.appendChild(productCard);
-        });
-
+        displayProducts(
+            productsToDisplay,
+            productsContainer,
+            canDelete,
+            onDelete
+        );
         createPageNumbers();
         updatePagination();
     }
 
+    // Create page numbers
     function createPageNumbers(): void {
+
         pageNumbers.innerHTML = "";
+
         for (let i = 0; i < totalPages; i++) {
+
             const page = document.createElement("span");
+
             page.textContent = String(i + 1);
             page.classList.add("page-link");
+
             if (currentPage === i) {
                 page.classList.add("active");
             }
+
             page.addEventListener("click", () => {
                 currentPage = i;
-                displayProducts();
+                showCurrentPage();
             });
+
             pageNumbers.appendChild(page);
         }
     }
 
+    // Update buttons
     function updatePagination(): void {
+
         prevBtn.disabled = currentPage === 0;
+
         nextBtn.disabled = currentPage >= totalPages - 1;
     }
 
+    // Next
     nextBtn.addEventListener("click", () => {
+
         if (currentPage < totalPages - 1) {
             currentPage++;
-            displayProducts();
+            showCurrentPage();
         }
+
     });
 
+    // Previous
     prevBtn.addEventListener("click", () => {
+
         if (currentPage > 0) {
             currentPage--;
-            displayProducts();
+            showCurrentPage();
         }
+
     });
 
-    // Cancel Delete
-    cancelDeleteBtn.addEventListener("click", () => {
-        deleteModal.hidden = true;
-        selectedProductId = null;
-    });
-
-    // Confirm Delete
-    confirmDeleteBtn.addEventListener("click", () => {
-        if (selectedProductId !== null) {
-            onDelete?.(selectedProductId);
-        }
-        deleteModal.hidden = true;
-        selectedProductId = null;
-    });
-    displayProducts();
+    showCurrentPage();
 }

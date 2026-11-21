@@ -1,13 +1,22 @@
-import { getProducts ,saveProducts } from "../product_storage/product_storage.js";
-import { setupPagination} from "../pagination/pagination.js";
+import { getProducts,saveProducts} from "../product_storage/product_storage.js";
+import { setupPagination } from "../pagination/pagination.js";
 import { Role } from "../user_model/user_model.js";
 import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 
+// Check permissions
 const canDelete =
     checkRole(Role.Admin) || checkRole(Role.manager);
 
+// Delete modal elements
+const deleteModal = document.getElementById("delete-modal") as HTMLElement;
+const confirmDeleteBtn = document.getElementById("confirm-delete") as HTMLButtonElement;
+const cancelDeleteBtn = document.getElementById("cancel-delete") as HTMLButtonElement;
+
+let selectedProductId: number | null = null;
+
+// Delete product
 function deleteProduct(id: number): void {
     const products = getProducts();
     const updatedProducts = products.filter(
@@ -17,14 +26,40 @@ function deleteProduct(id: number): void {
     window.location.reload();
 }
 
+// Open delete modal
+function openDeleteModal(id: number): void {
+    selectedProductId = id;
+    deleteModal.hidden = false;
+}
+
+// Cancel delete
+cancelDeleteBtn.addEventListener("click", () => {
+    deleteModal.hidden = true;
+    selectedProductId = null;
+});
+
+// Confirm delete
+confirmDeleteBtn.addEventListener("click", () => {
+    if (selectedProductId !== null) {
+        deleteProduct(selectedProductId);
+    }
+    deleteModal.hidden = true;
+    selectedProductId = null;
+});
+
+// Get products
 const products = getProducts();
 
+// Categories
 const categories = [
-    { name: "skin", id: "skin-products", paginationId: "skin-pagination" },
-    { name: "makeup", id: "makeup-products", paginationId: "makeup-pagination" },
-    { name: "hair", id: "hair-products", paginationId: "hair-pagination" }
+    { name: "skin",id: "skin-products",paginationId: "skin-pagination" },
+    { name: "makeup",id: "makeup-products",paginationId: "makeup-pagination"
+    },
+    { name: "hair",id: "hair-products",paginationId: "hair-pagination"
+    }
 ];
 
+// Display categories
 categories.forEach((category) => {
     const container = document.querySelector(`#${category.id}`);
     const pagination = document.querySelector(`#${category.paginationId}`);
@@ -32,11 +67,11 @@ categories.forEach((category) => {
     const nextBtn = pagination.querySelector(".next-btn") as HTMLButtonElement;
     const prevBtn = pagination.querySelector(".prev-btn") as HTMLButtonElement;
     const pageNumbers = pagination.querySelector(".page-numbers");
-
     if (!nextBtn || !prevBtn || !pageNumbers) return;
     const categoryProducts = products.filter(
         product => product.category === category.name
     );
+
     setupPagination(
         categoryProducts,
         container,
@@ -45,8 +80,7 @@ categories.forEach((category) => {
         prevBtn,
         3,
         canDelete,
-        deleteProduct
+        openDeleteModal
     );
 
-}); 
-
+});

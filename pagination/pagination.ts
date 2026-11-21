@@ -43,19 +43,15 @@ export function setupPagination(
             `;
 
             if (canDelete) {
-
                 const deleteBtn = document.createElement("button");
                 deleteBtn.textContent = "Delete";
                 deleteBtn.classList.add("delete-btn");
-
                 deleteBtn.addEventListener("click", () => {
                     selectedProductId = product.id;
                     deleteModal.hidden = false;
                 });
-
                 productCard.appendChild(deleteBtn);
             }
-
             productsContainer.appendChild(productCard);
         });
 
@@ -64,25 +60,18 @@ export function setupPagination(
     }
 
     function createPageNumbers(): void {
-
         pageNumbers.innerHTML = "";
-
         for (let i = 0; i < totalPages; i++) {
-
             const page = document.createElement("span");
-
             page.textContent = String(i + 1);
             page.classList.add("page-link");
-
             if (currentPage === i) {
                 page.classList.add("active");
             }
-
             page.addEventListener("click", () => {
                 currentPage = i;
                 displayProducts();
             });
-
             pageNumbers.appendChild(page);
         }
     }
@@ -114,14 +103,11 @@ export function setupPagination(
 
     // Confirm Delete
     confirmDeleteBtn.addEventListener("click", () => {
-
         if (selectedProductId !== null) {
             onDelete?.(selectedProductId);
         }
-
         deleteModal.hidden = true;
         selectedProductId = null;
     });
-
     displayProducts();
 }

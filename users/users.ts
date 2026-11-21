@@ -1,11 +1,8 @@
 
 import {User , Role}from "../user_model/user_model.js"
-
  let users:User[] =JSON.parse(
  localStorage.getItem("userlist")||"[]");
-
 if(users.length==0){
-
 const admin = new User(
     1,
     "Admin",
@@ -13,7 +10,6 @@ const admin = new User(
     "admin123",
     Role.Admin
 );
-
 const manager = new User(
     2,
     "manager",
@@ -24,7 +20,4 @@ const manager = new User(
 
     users.push(admin,manager);
     localStorage.setItem(("userlist"),JSON.stringify(users));
-
- 
-
 }

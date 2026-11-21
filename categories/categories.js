@@ -4,13 +4,13 @@ import { Role } from "../user_model/user_model.js";
 import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
+const canDelete = checkRole(Role.Admin) || checkRole(Role.manager);
 function deleteProduct(id) {
     const products = getProducts();
     const updatedProducts = products.filter(product => product.id !== id);
     saveProducts(updatedProducts);
     window.location.reload();
 }
-const canDelete = checkRole(Role.Admin) || checkRole(Role.manager);
 const products = getProducts();
 const categories = [
     { name: "skin", id: "skin-products", paginationId: "skin-pagination" },

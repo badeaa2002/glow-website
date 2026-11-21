@@ -23,7 +23,7 @@ registerForm.addEventListener("submit", (event) => {
            messageBox.textContent = "This email already exists!";
        }
        else {
-           // Generate new ID automatically
+           // Generate new ID
            const newId = users.length > 0
                ? Math.max(...users.map(user => user.id)) + 1
                : 1;

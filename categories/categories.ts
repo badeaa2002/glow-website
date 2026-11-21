@@ -5,6 +5,8 @@ import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 
+const canDelete =
+    checkRole(Role.Admin) || checkRole(Role.manager);
 
 function deleteProduct(id: number): void {
     const products = getProducts();
@@ -15,9 +17,6 @@ function deleteProduct(id: number): void {
     window.location.reload();
 }
 
-const canDelete =
-    checkRole(Role.Admin) || checkRole(Role.manager);
-
 const products = getProducts();
 
 const categories = [
@@ -27,22 +26,17 @@ const categories = [
 ];
 
 categories.forEach((category) => {
-
     const container = document.querySelector(`#${category.id}`);
     const pagination = document.querySelector(`#${category.paginationId}`);
-
     if (!container || !pagination) return;
-
     const nextBtn = pagination.querySelector(".next-btn") as HTMLButtonElement;
     const prevBtn = pagination.querySelector(".prev-btn") as HTMLButtonElement;
     const pageNumbers = pagination.querySelector(".page-numbers");
 
     if (!nextBtn || !prevBtn || !pageNumbers) return;
-
     const categoryProducts = products.filter(
         product => product.category === category.name
     );
-
     setupPagination(
         categoryProducts,
         container,
@@ -52,7 +46,6 @@ categories.forEach((category) => {
         3,
         canDelete,
         deleteProduct
-
     );
 
 }); 

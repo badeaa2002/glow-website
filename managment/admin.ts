@@ -17,11 +17,19 @@ const productImage = document.getElementById("product-image") as HTMLInputElemen
 const productCategory = document.getElementById("product-category") as HTMLSelectElement;
 const successMessage = document.getElementById("success-message") as HTMLElement;
 
+
+//if user not admin or manager go to home
+const isAdmin = checkRole(Role.Admin);
+const isManager = checkRole(Role.manager);
+
+if (!isAdmin && !isManager) {
+    window.location.replace("../home/home.html");
+};
+
+//add product
 let products: Product[] = getProducts();
 productForm.addEventListener("submit", (e) => {
-
     e.preventDefault();
-
     const newProduct: Product = {
         id: Math.max(...products.map(product => product.id)) + 1,
         name: productName.value,
@@ -30,25 +38,19 @@ productForm.addEventListener("submit", (e) => {
         image:`/images/${productImage.value}`,
         category: productCategory.value
     };
-
     products.push(newProduct);
-
     saveProducts(products);
-
     productForm.reset();
-
     successMessage.style.display = "flex";
-
      setTimeout(() => {
         successMessage.style.display = "none";
      }, 3000);
 
 });
 
-if (checkRole(Role.manager)) {
+if (isManager) {
     adminSection.hidden = true;
 }
-
 
 const users: User[] = JSON.parse(
     localStorage.getItem("userlist") || "[]"
@@ -92,7 +94,6 @@ function displayUsers() {
 });
     });
 }
-
 displayUsers();
 
 

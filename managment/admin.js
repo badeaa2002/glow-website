@@ -12,6 +12,14 @@ const productPrice = document.getElementById("product-price");
 const productImage = document.getElementById("product-image");
 const productCategory = document.getElementById("product-category");
 const successMessage = document.getElementById("success-message");
+//if user not admin or manager go to home
+const isAdmin = checkRole(Role.Admin);
+const isManager = checkRole(Role.manager);
+if (!isAdmin && !isManager) {
+    window.location.replace("../home/home.html");
+}
+;
+//add product
 let products = getProducts();
 productForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -31,7 +39,7 @@ productForm.addEventListener("submit", (e) => {
         successMessage.style.display = "none";
     }, 3000);
 });
-if (checkRole(Role.manager)) {
+if (isManager) {
     adminSection.hidden = true;
 }
 const users = JSON.parse(localStorage.getItem("userlist") || "[]");

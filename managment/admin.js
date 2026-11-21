@@ -11,6 +11,7 @@ const productDescription = document.getElementById("product-description");
 const productPrice = document.getElementById("product-price");
 const productImage = document.getElementById("product-image");
 const productCategory = document.getElementById("product-category");
+const successMessage = document.getElementById("success-message");
 let products = getProducts();
 productForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -25,7 +26,10 @@ productForm.addEventListener("submit", (e) => {
     products.push(newProduct);
     saveProducts(products);
     productForm.reset();
-    alert("Product added successfully!");
+    successMessage.style.display = "flex";
+    setTimeout(() => {
+        successMessage.style.display = "none";
+    }, 3000);
 });
 if (checkRole(Role.manager)) {
     adminSection.hidden = true;

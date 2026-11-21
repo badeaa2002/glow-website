@@ -15,6 +15,7 @@ const productDescription = document.getElementById("product-description") as HTM
 const productPrice = document.getElementById("product-price") as HTMLInputElement;
 const productImage = document.getElementById("product-image") as HTMLInputElement;
 const productCategory = document.getElementById("product-category") as HTMLSelectElement;
+const successMessage = document.getElementById("success-message") as HTMLElement;
 
 let products: Product[] = getProducts();
 productForm.addEventListener("submit", (e) => {
@@ -36,7 +37,11 @@ productForm.addEventListener("submit", (e) => {
 
     productForm.reset();
 
-    alert("Product added successfully!");
+    successMessage.style.display = "flex";
+
+     setTimeout(() => {
+        successMessage.style.display = "none";
+     }, 3000);
 
 });
 

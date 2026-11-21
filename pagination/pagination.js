@@ -1,5 +1,9 @@
 export function setupPagination(displayedProducts, productsContainer, pageNumbers, nextBtn, prevBtn, productsPerPage, canDelete = false, onDelete) {
     let currentPage = 0;
+    let selectedProductId = null;
+    const deleteModal = document.getElementById("delete-modal");
+    const confirmDeleteBtn = document.getElementById("confirm-delete");
+    const cancelDeleteBtn = document.getElementById("cancel-delete");
     const totalPages = Math.ceil(displayedProducts.length / productsPerPage);
     function displayProducts() {
         productsContainer.innerHTML = "";
@@ -19,7 +23,8 @@ export function setupPagination(displayedProducts, productsContainer, pageNumber
                 deleteBtn.textContent = "Delete";
                 deleteBtn.classList.add("delete-btn");
                 deleteBtn.addEventListener("click", () => {
-                    onDelete?.(product.id);
+                    selectedProductId = product.id;
+                    deleteModal.hidden = false;
                 });
                 productCard.appendChild(deleteBtn);
             }
@@ -46,7 +51,7 @@ export function setupPagination(displayedProducts, productsContainer, pageNumber
     }
     function updatePagination() {
         prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage === totalPages - 1;
+        nextBtn.disabled = currentPage >= totalPages - 1;
     }
     nextBtn.addEventListener("click", () => {
         if (currentPage < totalPages - 1) {
@@ -59,6 +64,19 @@ export function setupPagination(displayedProducts, productsContainer, pageNumber
             currentPage--;
             displayProducts();
         }
+    });
+    // Cancel Delete
+    cancelDeleteBtn.addEventListener("click", () => {
+        deleteModal.hidden = true;
+        selectedProductId = null;
+    });
+    // Confirm Delete
+    confirmDeleteBtn.addEventListener("click", () => {
+        if (selectedProductId !== null) {
+            onDelete?.(selectedProductId);
+        }
+        deleteModal.hidden = true;
+        selectedProductId = null;
     });
     displayProducts();
 }

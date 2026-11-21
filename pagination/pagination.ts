@@ -1,17 +1,25 @@
+
 import type { Product } from "../product_model/product_model.js";
 
 export function setupPagination(
-    displayedProducts :Product[],
-    productsContainer:Element,
-    pageNumbers:Element,
-    nextBtn:HTMLButtonElement,
-    prevBtn:HTMLButtonElement,
+    displayedProducts: Product[],
+    productsContainer: Element,
+    pageNumbers: Element,
+    nextBtn: HTMLButtonElement,
+    prevBtn: HTMLButtonElement,
     productsPerPage: number,
     canDelete: boolean = false,
     onDelete?: (id: number) => void
-):void {
-     let currentPage = 0;
-     const totalPages = Math.ceil(
+): void {
+
+    let currentPage = 0;
+    let selectedProductId: number | null = null;
+
+    const deleteModal = document.getElementById("delete-modal") as HTMLElement;
+    const confirmDeleteBtn = document.getElementById("confirm-delete") as HTMLButtonElement;
+    const cancelDeleteBtn = document.getElementById("cancel-delete") as HTMLButtonElement;
+
+    const totalPages = Math.ceil(
         displayedProducts.length / productsPerPage
     );
     function displayProducts(): void {
@@ -23,8 +31,8 @@ export function setupPagination(
         );
 
         productsToDisplay.forEach((product) => {
-            const productCard = document.createElement("div");
 
+            const productCard = document.createElement("div");
             productCard.classList.add("product-card");
 
             productCard.innerHTML = `
@@ -33,14 +41,16 @@ export function setupPagination(
                 <p>${product.description}</p>
                 <span>$${product.price}</span>
             `;
-            if (canDelete) {
-                const deleteBtn = document.createElement("button");
 
+            if (canDelete) {
+
+                const deleteBtn = document.createElement("button");
                 deleteBtn.textContent = "Delete";
                 deleteBtn.classList.add("delete-btn");
 
                 deleteBtn.addEventListener("click", () => {
-                    onDelete?.(product.id);
+                    selectedProductId = product.id;
+                    deleteModal.hidden = false;
                 });
 
                 productCard.appendChild(deleteBtn);
@@ -48,12 +58,12 @@ export function setupPagination(
 
             productsContainer.appendChild(productCard);
         });
+
         createPageNumbers();
         updatePagination();
+    }
 
-}
-
-function createPageNumbers(): void {
+    function createPageNumbers(): void {
 
         pageNumbers.innerHTML = "";
 
@@ -79,7 +89,7 @@ function createPageNumbers(): void {
 
     function updatePagination(): void {
         prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage === totalPages - 1;
+        nextBtn.disabled = currentPage >= totalPages - 1;
     }
 
     nextBtn.addEventListener("click", () => {
@@ -96,9 +106,22 @@ function createPageNumbers(): void {
         }
     });
 
+    // Cancel Delete
+    cancelDeleteBtn.addEventListener("click", () => {
+        deleteModal.hidden = true;
+        selectedProductId = null;
+    });
+
+    // Confirm Delete
+    confirmDeleteBtn.addEventListener("click", () => {
+
+        if (selectedProductId !== null) {
+            onDelete?.(selectedProductId);
+        }
+
+        deleteModal.hidden = true;
+        selectedProductId = null;
+    });
+
     displayProducts();
 }
-
-
-
-

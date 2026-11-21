@@ -301,7 +301,6 @@ nav button:hover {
   padding: 9px 22px;
   border-radius: 8px;
   font-size: 14px;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 12px;
@@ -310,4 +309,51 @@ nav button:hover {
   background-color: #c93e5b;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(201, 62, 91, 0.2);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.delete-modal-box {
+  background: #F8F5F0;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: 350px;
+}
+.delete-modal-box h3 {
+  color: #66594F;
+}
+.delete-modal-box p {
+  color: #8B7868;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal-buttons .cancel-btn {
+  background: #F3EADF;
+  color: #66594F;
+}
+.modal-buttons .confirm-btn {
+  background: #B9A394;
+  color: #FFFFFF;
 }/*# sourceMappingURL=categories.css.map */

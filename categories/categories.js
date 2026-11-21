@@ -1,20 +1,16 @@
 import { getProducts, saveProducts } from "../product_storage/product_storage.js";
 import { setupPagination } from "../pagination/pagination.js";
-import { User, Role } from "../user_model/user_model.js";
+import { Role } from "../user_model/user_model.js";
+import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
-const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
 function deleteProduct(id) {
-    if (!confirm("Are you sure you want to delete this product?")) {
-        return;
-    }
     const products = getProducts();
     const updatedProducts = products.filter(product => product.id !== id);
     saveProducts(updatedProducts);
     window.location.reload();
 }
-const canDelete = currentUser?.role === Role.Admin ||
-    currentUser?.role === Role.manager;
+const canDelete = checkRole(Role.Admin) || checkRole(Role.manager);
 const products = getProducts();
 const categories = [
     { name: "skin", id: "skin-products", paginationId: "skin-pagination" },

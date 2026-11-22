@@ -1,21 +1,19 @@
-import { Role } from "../user_model/user_model.js";
-import { checkRole } from "../check_role/check_role.js";
 import "../users/users.js";
+import * as Permissions from "../permissions/permissions.js";
 const loginButton = document.querySelector("#login");
 const adminLink = document.querySelector("#admin-link");
 const homeLink = document.querySelector("#home-link");
-if (localStorage.getItem("currentUser")) {
+if (Permissions.isLoggedIn()) {
     loginButton.textContent = "Logout";
-    if (checkRole(Role.Admin)) {
-        adminLink.hidden = false;
-    }
-    if (checkRole(Role.manager)) {
-        adminLink.hidden = false;
-        homeLink.hidden = true;
-    }
+}
+if (Permissions.canAccessAdminPage()) {
+    adminLink.hidden = false;
+}
+if (!Permissions.canAccessHome()) {
+    homeLink.hidden = true;
 }
 loginButton.addEventListener("click", () => {
-    if (loginButton.textContent === "Logout") {
+    if (Permissions.isLoggedIn()) {
         localStorage.removeItem("currentUser");
         window.location.href = "../home/home.html";
     }

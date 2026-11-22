@@ -1,9 +1,6 @@
-
-import {User , Role}from "../user_model/user_model.js";
-import { checkRole } from "../check_role/check_role.js";
-import "../users/users.js";
+import * as Permissions from "../permissions/permissions.js";
+import { User, Role } from "../user_model/user_model.js";
 import "../nav-bar/nav-bar.js";
-
 import type { Product } from "../product_model/product_model.js";
 import { getProducts, saveProducts } from "../product_storage/product_storage.js";
 
@@ -19,13 +16,14 @@ const successMessage = document.getElementById("success-message") as HTMLElement
 
 
 //if user not admin or manager go to home
-const isAdmin = checkRole(Role.Admin);
-const isManager = checkRole(Role.manager);
-
-if (!isAdmin && !isManager) {
+if (!Permissions.canAccessAdminPage()) {
     window.location.replace("../home/home.html");
-};
+}
 
+//check if manager or not
+if (!Permissions.canManageUsers()) {
+    adminSection.hidden = true;
+}
 //add product
 let products: Product[] = getProducts();
 productForm.addEventListener("submit", (e) => {
@@ -47,10 +45,6 @@ productForm.addEventListener("submit", (e) => {
      }, 3000);
 
 });
-
-if (isManager) {
-    adminSection.hidden = true;
-}
 
 const users: User[] = JSON.parse(
     localStorage.getItem("userlist") || "[]"

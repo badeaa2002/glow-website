@@ -1,11 +1,10 @@
 import { getProducts, saveProducts } from "../product_storage/product_storage.js";
 import { setupPagination } from "../pagination/pagination.js";
-import { Role } from "../user_model/user_model.js";
-import { checkRole } from "../check_role/check_role.js";
+import * as Permissions from "../permissions/permissions.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 // Check permissions
-const canDelete = checkRole(Role.Admin) || checkRole(Role.manager);
+const canDelete = Permissions.canDelete();
 // Delete modal elements
 const deleteModal = document.getElementById("delete-modal");
 const confirmDeleteBtn = document.getElementById("confirm-delete");

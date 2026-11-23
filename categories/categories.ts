@@ -19,7 +19,9 @@ function deleteProduct(id: number): void {
         product => product.id !== id
     );
     saveProducts(updatedProducts);
-}
+    refreshCategories();
+   
+    }
 
 // Open delete modal
 function openDeleteModal(id: number): void {
@@ -39,12 +41,9 @@ $("#confirm-delete").on("click", () => {
         deleteProduct(selectedProductId);
         deleteModal.hide();
         selectedProductId = null;
-        window.location.reload();
     }
 });
 
-// Get products
-const products = getProducts();
 
 // Categories
 const categories = [
@@ -56,26 +55,38 @@ const categories = [
 ];
 
 // Display categories
-categories.forEach((category) => {
-    const container = document.querySelector(`#${category.id}`);
-    const pagination = document.querySelector(`#${category.paginationId}`);
-    if (!container || !pagination) return;
-    const nextBtn = pagination.querySelector(".next-btn") as HTMLButtonElement;
-    const prevBtn = pagination.querySelector(".prev-btn") as HTMLButtonElement;
-    const pageNumbers = pagination.querySelector(".page-numbers");
-    if (!nextBtn || !prevBtn || !pageNumbers) return;
-    const categoryProducts = products.filter(
-        product => product.category === category.name
-    );
 
-    setupPagination(
-        categoryProducts,
-        container,
-        pageNumbers,
-        nextBtn,
-        prevBtn,
-        3,
-        canDelete,
-        openDeleteModal
-    );
-});
+function refreshCategories(): void {
+    const updatedProducts = getProducts();
+
+    categories.forEach((category) => {
+        const container = document.querySelector(`#${category.id}`);
+        const pagination = document.querySelector(`#${category.paginationId}`);
+
+        if (!container || !pagination) return;
+
+        const nextBtn = pagination.querySelector(".next-btn") as HTMLButtonElement;
+        const prevBtn = pagination.querySelector(".prev-btn") as HTMLButtonElement;
+        const pageNumbers = pagination.querySelector(".page-numbers");
+
+        if (!nextBtn || !prevBtn || !pageNumbers) return;
+
+        const categoryProducts = updatedProducts.filter(
+            product => product.category === category.name
+        );
+
+        setupPagination(
+            categoryProducts,
+            container,
+            pageNumbers,
+            nextBtn,
+            prevBtn,
+            3,
+            canDelete,
+            openDeleteModal
+        );
+    });
+}
+
+// Display categories when page loads
+refreshCategories();

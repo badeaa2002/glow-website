@@ -11,11 +11,13 @@ if (Permissions.isLoggedIn()) {
     loginButton.textContent = "Logout";
 }
 
-if (Permissions.canAccessAdminPage()) {
+// Admin link
+if (adminLink && Permissions.canAccessAdminPage()) {
     adminLink.hidden = false;
 }
 
-if (!Permissions.canAccessHome()) {
+// Home link
+if (homeLink && !Permissions.canAccessHome()) {
     homeLink.hidden = true;
 }
 

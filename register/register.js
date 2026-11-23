@@ -1,19 +1,20 @@
+import $ from "jquery";
 import { User, Role } from "../user_model/user_model.js";
 import "../users/users.js";
-const registerForm = document.querySelector("#register-form");
-const messageBox = document.querySelector("#message-box");
-registerForm.addEventListener("submit", (event) => {
+const registerForm = $("#register-form");
+const messageBox = $("#message-box");
+registerForm.on("submit", (event) => {
     event.preventDefault();
-    const name = document.querySelector("#name").value.trim();
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#password").value;
+    const name = $("#name").val().trim();
+    const email = $("#email").val().trim();
+    const password = $("#password").val();
     if (name && email && password) {
         const role = Role.User;
         const users = JSON.parse(localStorage.getItem("userlist") || "[]");
         // Check if email already exists
         const exists = users.some(user => user.email.toLowerCase() === email.toLowerCase());
         if (exists) {
-            messageBox.textContent = "This email already exists!";
+            messageBox.text("This email already exists!");
         }
         else {
             // Generate new ID
@@ -26,12 +27,12 @@ registerForm.addEventListener("submit", (event) => {
             users.push(newUser);
             // Save updated array
             localStorage.setItem("userlist", JSON.stringify(users));
-            messageBox.textContent = "Account created successfully!";
-            registerForm.reset();
+            messageBox.text("Account created successfully!");
+            registerForm.trigger("reset");
         }
-        messageBox.style.display = "block";
+        messageBox.show();
         setTimeout(() => {
-            messageBox.style.display = "none";
+            messageBox.hide();
         }, 1000);
     }
 });

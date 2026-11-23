@@ -3,7 +3,7 @@ import { setupPagination } from "../pagination/pagination.js";
 import * as Permissions from "../permissions/permissions.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
-import $ from "jquery";
+
 
 // Check permissions
 const canDelete = Permissions.canDelete();
@@ -24,7 +24,7 @@ function deleteProduct(id: number): void {
 // Open delete modal
 function openDeleteModal(id: number): void {
     selectedProductId = id;
-    deleteModal.show();
+   deleteModal.prop("hidden", false);
 }
 
 // Cancel delete
@@ -37,6 +37,9 @@ $("#cancel-delete").on("click", () => {
 $("#confirm-delete").on("click", () => {
     if (selectedProductId !== null) {
         deleteProduct(selectedProductId);
+        deleteModal.hide();
+        selectedProductId = null;
+        window.location.reload();
     }
 });
 

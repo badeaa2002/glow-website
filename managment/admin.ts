@@ -1,98 +1,98 @@
+
 import * as Permissions from "../permissions/permissions.js";
 import { User, Role } from "../user_model/user_model.js";
 import "../nav-bar/nav-bar.js";
 import type { Product } from "../product_model/product_model.js";
 import { getProducts, saveProducts } from "../product_storage/product_storage.js";
 
-const usersTable = document.querySelector("#users-table") as HTMLTableSectionElement;
-const adminSection =document.getElementById("admin")  as HTMLElement;
-const productForm = document.getElementById("product-form") as HTMLFormElement;
-const productName = document.getElementById("product-name") as HTMLInputElement;
-const productDescription = document.getElementById("product-description") as HTMLTextAreaElement;
-const productPrice = document.getElementById("product-price") as HTMLInputElement;
-const productImage = document.getElementById("product-image") as HTMLInputElement;
-const productCategory = document.getElementById("product-category") as HTMLSelectElement;
-const successMessage = document.getElementById("success-message") as HTMLElement;
+// Select elements using jQuery
+const usersTable = $("#users-table");
+const adminSection = $("#admin");
+const productForm = $("#product-form");
+const successMessage = $("#success-message");
 
-
-//if user not admin or manager go to home
+// Check permissions
 if (!Permissions.canAccessAdminPage()) {
     window.location.replace("../home/home.html");
 }
 
-//check if manager or not
+// Check if manager or not
 if (!Permissions.canManageUsers()) {
-    adminSection.hidden = true;
+    adminSection.hide();
 }
-//add product
+
+// Add product
 let products: Product[] = getProducts();
-productForm.addEventListener("submit", (e) => {
+
+productForm.on("submit", (e) => {
     e.preventDefault();
     const newProduct: Product = {
         id: Math.max(...products.map(product => product.id)) + 1,
-        name: productName.value,
-        description: productDescription.value,
-        price: Number(productPrice.value),
-        image:`/images/${productImage.value}`,
-        category: productCategory.value
+        name: $("#product-name").val() as string,
+        description: $("#product-description").val() as string,
+        price: Number($("#product-price").val()),
+        image: `/images/${$("#product-image").val()}`,
+        category: $("#product-category").val() as string
     };
+
     products.push(newProduct);
     saveProducts(products);
-    productForm.reset();
-    successMessage.style.display = "flex";
-     setTimeout(() => {
-        successMessage.style.display = "none";
-     }, 3000);
-
+    // Reset form
+    productForm.trigger("reset");
+    // Show success message with animation
+    successMessage.fadeIn(200);
+    setTimeout(() => {
+        successMessage.fadeOut(700);
+    }, 1000);
 });
-
+// Get users
 const users: User[] = JSON.parse(
     localStorage.getItem("userlist") || "[]"
 );
 // Display Users
-function displayUsers() {
-    usersTable.innerHTML = "";
+function displayUsers(): void {
+    usersTable.empty();
     users.forEach((user, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${user.email}</td>
-            <td>${Role[user.role]}</td>
-            <td>
-                <button class="edit-btn">Edit</button>
-                <select class="role-select" hidden>
-                    <option value="2">User</option>
-                    <option value="3">manager</option>
-                </select>
-                <button class="save-btn" hidden>Save</button>
-            </td>
-        `;
-        usersTable.appendChild(row);
-        const editButton = row.querySelector(".edit-btn") as HTMLButtonElement;
-        const roleSelect = row.querySelector(".role-select") as HTMLSelectElement;
-        const saveButton = row.querySelector(".save-btn") as HTMLButtonElement;
-        roleSelect.value = String(user.role);
+        const row = $(`
+            <tr>
+                <td>${user.email}</td>
+                <td>${Role[user.role]}</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <select class="role-select" hidden>
+                        <option value="2">User</option>
+                        <option value="3">Manager</option>
+                    </select>
+                    <button class="save-btn" hidden>Save</button>
+                </td>
+            </tr>
+        `);
+        usersTable.append(row);
+        const editButton = row.find(".edit-btn");
+        const roleSelect = row.find(".role-select");
+        const saveButton = row.find(".save-btn");
+        roleSelect.val(String(user.role));
         // Edit Role
-        editButton.addEventListener("click", () => {
-            roleSelect.hidden = false;
-            saveButton.hidden = false;
-            editButton.hidden = true;
+        editButton.on("click", () => {
+            roleSelect.show();
+            saveButton.show();
+            editButton.hide();
+
         });
-     // Save Role
-    saveButton.addEventListener("click", () => {
-    const selectedUser = users[index];
-    if (selectedUser) {
-        selectedUser.role = Number(roleSelect.value) as Role;
-        localStorage.setItem("userlist", JSON.stringify(users));
-        displayUsers();
-    }
-});
+
+        // Save Role
+        saveButton.on("click", () => {
+            const selectedUser = users[index];
+            if (selectedUser) {
+                selectedUser.role = Number(roleSelect.val()) as Role;
+                localStorage.setItem(
+                    "userlist",
+                    JSON.stringify(users)
+                );
+                displayUsers();
+            }
+        });
     });
 }
+
 displayUsers();
-
-
-
-
-
-
-

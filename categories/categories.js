@@ -5,35 +5,33 @@ import "../users/users.js";
 import "../nav-bar/nav-bar.js";
 // Check permissions
 const canDelete = Permissions.canDelete();
-// Delete modal elements
-const deleteModal = document.getElementById("delete-modal");
-const confirmDeleteBtn = document.getElementById("confirm-delete");
-const cancelDeleteBtn = document.getElementById("cancel-delete");
+// Delete modal element
+const deleteModal = $("#delete-modal");
 let selectedProductId = null;
 // Delete product
 function deleteProduct(id) {
     const products = getProducts();
     const updatedProducts = products.filter(product => product.id !== id);
     saveProducts(updatedProducts);
-    window.location.reload();
 }
 // Open delete modal
 function openDeleteModal(id) {
     selectedProductId = id;
-    deleteModal.hidden = false;
+    deleteModal.prop("hidden", false);
 }
 // Cancel delete
-cancelDeleteBtn.addEventListener("click", () => {
-    deleteModal.hidden = true;
+$("#cancel-delete").on("click", () => {
+    deleteModal.hide();
     selectedProductId = null;
 });
 // Confirm delete
-confirmDeleteBtn.addEventListener("click", () => {
+$("#confirm-delete").on("click", () => {
     if (selectedProductId !== null) {
         deleteProduct(selectedProductId);
+        deleteModal.hide();
+        selectedProductId = null;
+        window.location.reload();
     }
-    deleteModal.hidden = true;
-    selectedProductId = null;
 });
 // Get products
 const products = getProducts();

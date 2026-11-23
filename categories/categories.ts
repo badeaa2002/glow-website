@@ -3,15 +3,13 @@ import { setupPagination } from "../pagination/pagination.js";
 import * as Permissions from "../permissions/permissions.js";
 import "../users/users.js";
 import "../nav-bar/nav-bar.js";
+import $ from "jquery";
 
 // Check permissions
 const canDelete = Permissions.canDelete();
 
-// Delete modal elements
-const deleteModal = document.getElementById("delete-modal") as HTMLElement;
-const confirmDeleteBtn = document.getElementById("confirm-delete") as HTMLButtonElement;
-const cancelDeleteBtn = document.getElementById("cancel-delete") as HTMLButtonElement;
-
+// Delete modal element
+const deleteModal = $("#delete-modal");
 let selectedProductId: number | null = null;
 
 // Delete product
@@ -21,28 +19,25 @@ function deleteProduct(id: number): void {
         product => product.id !== id
     );
     saveProducts(updatedProducts);
-    window.location.reload();
 }
 
 // Open delete modal
 function openDeleteModal(id: number): void {
     selectedProductId = id;
-    deleteModal.hidden = false;
+    deleteModal.show();
 }
 
 // Cancel delete
-cancelDeleteBtn.addEventListener("click", () => {
-    deleteModal.hidden = true;
+$("#cancel-delete").on("click", () => {
+    deleteModal.hide();
     selectedProductId = null;
 });
 
 // Confirm delete
-confirmDeleteBtn.addEventListener("click", () => {
+$("#confirm-delete").on("click", () => {
     if (selectedProductId !== null) {
         deleteProduct(selectedProductId);
     }
-    deleteModal.hidden = true;
-    selectedProductId = null;
 });
 
 // Get products
@@ -80,5 +75,4 @@ categories.forEach((category) => {
         canDelete,
         openDeleteModal
     );
-
 });
